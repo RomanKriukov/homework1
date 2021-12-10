@@ -7,13 +7,12 @@ public class Main {
     public static volatile int count = 0;
 
     public static void main(String[] args) {
-        Semaphore oxygen = new Semaphore(1);
-        Semaphore hydrogen = new Semaphore(2);
+        Semaphore water = new Semaphore(3);
 
-        for(int i = 0;i < 10;){
+        for(int i = 0;i < 20;){
             if(count < 3) {
-                new Thread(new Hydrogen(hydrogen)).start();
-                new Thread(new Oxygen(oxygen)).start();
+                new Thread(new Hydrogen(water)).start();
+                new Thread(new Oxygen(water)).start();
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
