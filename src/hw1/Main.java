@@ -14,19 +14,12 @@ public class Main {
                 new Thread(new Hydrogen(water)).start();
                 new Thread(new Hydrogen(water)).start();
                 new Thread(new Oxygen(water)).start();
-                if(count == 3){
-                    count = 0;
-                    Oxygen.setCount();
-                    Hydrogen.setCount();
-                    System.out.println();
-
-                }
                 i++;
             }
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            if(count == 3){
+                count = 0;
+                System.out.println();
+                water.reset();
             }
         }
     }
