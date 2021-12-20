@@ -3,7 +3,6 @@ package hw1;
 import java.util.concurrent.Semaphore;
 
 public class Hydrogen extends Thread{
-    private String hydrogen = "H";
     public static volatile int count = 0;
     private final Semaphore sem;
 
@@ -14,7 +13,7 @@ public class Hydrogen extends Thread{
     private void releaseHydrogen(){
         count++;
         Main.count += count;
-        System.out.print(this.hydrogen);
+        System.out.print("H");
     }
 
      public static void setCount(){

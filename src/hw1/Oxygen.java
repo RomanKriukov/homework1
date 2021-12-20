@@ -3,7 +3,6 @@ package hw1;
 import java.util.concurrent.Semaphore;
 
 public class Oxygen extends Thread{
-    private String oxygen = "O";
     public static volatile int count = 0;
     private final Semaphore sem;
 
@@ -14,7 +13,7 @@ public class Oxygen extends Thread{
     private void releaseOxygen(){
         count++;
         Main.count += count;
-        System.out.print(this.oxygen);
+        System.out.print("O");
     }
 
     public static void setCount(){
