@@ -1,12 +1,12 @@
 package hw1;
 
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.CyclicBarrier;
 
 public class Hydrogen extends Thread{
     public static volatile int count = 0;
-    private final Semaphore sem;
+    private final CyclicBarrier sem;
 
-    public Hydrogen(Semaphore sem) {
+    public Hydrogen(CyclicBarrier sem) {
         this.sem = sem;
     }
 
@@ -23,10 +23,9 @@ public class Hydrogen extends Thread{
     @Override
     public void run(){
         try{
-            while (count < 2){
-                sem.acquire();
+            if (count < 1){
+                sem.await();
                 releaseHydrogen();
-                sem.release();
             }
         } catch (Exception e) {
             e.printStackTrace();

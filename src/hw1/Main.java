@@ -1,25 +1,32 @@
 package hw1;
 
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.CyclicBarrier;
 
 public class Main {
 
     public static volatile int count = 0;
 
     public static void main(String[] args) {
-        Semaphore water = new Semaphore(3);
+        CyclicBarrier water = new CyclicBarrier(3);
 
         for(int i = 0;i < 20;){
-            if(count < 3) {
+            if(count == 0) {
+                new Thread(new Hydrogen(water)).start();
                 new Thread(new Hydrogen(water)).start();
                 new Thread(new Oxygen(water)).start();
+                if(count == 3){
+                    count = 0;
+                    Oxygen.setCount();
+                    Hydrogen.setCount();
+                    System.out.println();
+
+                }
                 i++;
             }
-            else{
-                count = 0;
-                Oxygen.setCount();
-                Hydrogen.setCount();
-                System.out.println();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
