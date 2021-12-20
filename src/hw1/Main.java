@@ -13,11 +13,6 @@ public class Main {
             if(count < 3) {
                 new Thread(new Hydrogen(water)).start();
                 new Thread(new Oxygen(water)).start();
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 i++;
             }
             else{
