@@ -16,8 +16,8 @@ public class Oxygen extends Thread{
     @Override
     public void run(){
         try{
-            releaseOxygen();
             Main.count++;
+            releaseOxygen();
             sem.await();
         } catch (Exception e) {
             e.printStackTrace();
