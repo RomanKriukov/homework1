@@ -9,9 +9,7 @@ public class Hydrogen extends Thread{
         this.sem = sem;
     }
 
-    private void releaseHydrogen(){
-        System.out.print("H");
-    }
+    private void releaseHydrogen(){ System.out.print("H"); }
 
     @Override
     public void run(){
