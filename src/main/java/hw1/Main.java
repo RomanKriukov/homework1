@@ -12,7 +12,8 @@ public class Main {
 
         CyclicBarrier water = new CyclicBarrier(4);
 
-        for(int i = 0;i < moleculeCounter(input);){
+        int i = 0;
+        while(i < moleculeCounter(input)){
             if(count == 0) {
                 new Thread(new Hydrogen(water)).start();
                 new Thread(new Oxygen(water)).start();
