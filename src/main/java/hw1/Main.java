@@ -8,7 +8,7 @@ public class Main {
     public static volatile int count = 0;
 
     public static void main(String[] args) {
-        String[] input  = "OOHHOHHHHOHH".split("");
+        String input  = "OOHHOHHHHOHH";
 
         CyclicBarrier cyclicBarrier = new CyclicBarrier(4);
 
@@ -36,11 +36,11 @@ public class Main {
         }
     }
 
-    public static int getQuantityOfMolecules(String[] input){
+    public static int getQuantityOfMolecules(String input){
         int oxygenCounter = 0;
         int hydrogenCounter = 0;
 
-        for(String val : input){
+        for(String val : input.split("")){
             if(val.equals("O")){
                 oxygenCounter++;
             }else{
