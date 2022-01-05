@@ -10,17 +10,17 @@ public class Main {
     public static void main(String[] args) {
         String[] input  = "OOHHOHHHHOHH".split("");
 
-        CyclicBarrier water = new CyclicBarrier(4);
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(4);
 
         int i = 0;
-        while(i < moleculeCounter(input)){
+        while(i < getQuantityOfMolecules(input)){
             if(count == 0) {
-                new Thread(new Hydrogen(water)).start();
-                new Thread(new Oxygen(water)).start();
-                new Thread(new Hydrogen(water)).start();
+                new Thread(new Hydrogen(cyclicBarrier)).start();
+                new Thread(new Oxygen(cyclicBarrier)).start();
+                new Thread(new Hydrogen(cyclicBarrier)).start();
 
                 try {
-                    water.await();
+                    cyclicBarrier.await();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (BrokenBarrierException e) {
@@ -28,15 +28,15 @@ public class Main {
                 }
                 i++;
             }
-            if(!water.isBroken()){
+            if(!cyclicBarrier.isBroken()){
                 count = 0;
                 System.out.println();
-                water.reset();
+                cyclicBarrier.reset();
             }
         }
     }
 
-    public static int moleculeCounter(String[] input){
+    public static int getQuantityOfMolecules(String[] input){
         int oxygenCounter = 0;
         int hydrogenCounter = 0;
 

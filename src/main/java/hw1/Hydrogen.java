@@ -3,10 +3,10 @@ package hw1;
 import java.util.concurrent.CyclicBarrier;
 
 public class Hydrogen extends Thread{
-    private final CyclicBarrier sem;
+    private final CyclicBarrier cyclicBarrier;
 
-    public Hydrogen(CyclicBarrier sem) {
-        this.sem = sem;
+    public Hydrogen(CyclicBarrier cyclicBarrier) {
+        this.cyclicBarrier = cyclicBarrier;
     }
 
     private void releaseHydrogen(){ System.out.print("H"); }
@@ -16,7 +16,7 @@ public class Hydrogen extends Thread{
         try{
             Main.count++;
             releaseHydrogen();
-            sem.await();
+            cyclicBarrier.await();
         } catch (Exception e) {
             e.printStackTrace();
         }

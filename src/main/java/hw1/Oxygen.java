@@ -3,10 +3,10 @@ package hw1;
 import java.util.concurrent.CyclicBarrier;
 
 public class Oxygen extends Thread{
-    private final CyclicBarrier sem;
+    private final CyclicBarrier cyclicBarrier;
 
-    public Oxygen(CyclicBarrier sem) {
-        this.sem = sem;
+    public Oxygen(CyclicBarrier cyclicBarrier) {
+        this.cyclicBarrier = cyclicBarrier;
     }
 
     private void releaseOxygen(){
@@ -18,7 +18,7 @@ public class Oxygen extends Thread{
         try{
             Main.count++;
             releaseOxygen();
-            sem.await();
+            cyclicBarrier.await();
         } catch (Exception e) {
             e.printStackTrace();
         }
